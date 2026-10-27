@@ -1,0 +1,17 @@
+body { width: 360px; font: 13px system-ui, sans-serif; margin: 0; padding: 12px; }
+h1 { font-size: 15px; margin: 0 0 8px; }
+input, button { width: 100%; box-sizing: border-box; padding: 7px; margin-bottom: 6px; }
+.bar { display: flex; gap: 6px; } .bar button { margin: 0; }
+.ghost { background: none; border: 1px solid #ccc; width: auto; white-space: nowrap; }
+ul { list-style: none; padding: 0; margin: 10px 0 0; max-height: 380px; overflow-y: auto; }
+li { border: 1px solid #ddd; border-radius: 6px; padding: 8px; margin-bottom: 8px; }
+.title { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.url { color: #666; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.badge { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 11px; margin: 4px 0; }
+.waiting { background: #fef9c3; } .pending { background: #eee; } .processing { background: #dbeafe; }
+.completed { background: #dcfce7; } .failed { background: #fee2e2; }
+.tags span { background: #f3f4f6; border-radius: 4px; padding: 1px 5px; margin-right: 4px; font-size: 11px; }
+#error { color: #b91c1c; margin: 6px 0 0; }
+.result { margin-top: 4px; max-height: 160px; overflow-y: auto; white-space: pre-wrap; word-break: break-word; }
+.field { font-size: 12px; margin-top: 2px; }
+.err { color: #b91c1c; margin-top: 4px; }
