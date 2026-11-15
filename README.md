@@ -2,7 +2,13 @@
 
     npm i && npm run build      # then chrome://extensions > Developer mode > Load unpacked > select the dist/ folder (it must contain manifest.json)
 
-Set `API_BASE` and `ENDPOINTS` in src/shared/config.ts, and `host_permissions` in manifest.json.
+Requires Node.js 20.12 or later. Set `API_BASE` in a root `.env` file (for example,
+`API_BASE=https://example.com/api/v1`) or in the environment when building to override
+the default `http://localhost:8000/api/v1`. Environment variables take precedence
+over `.env`. The URL is embedded in the extension and must not contain secrets.
+The build sets the matching host permission in `dist/manifest.json`. After changing
+the URL, rebuild and reload the extension in Chrome. Configure `ENDPOINTS` in
+src/shared/config.ts.
 Same auth, endpoints, job pool (max 10 active) and polling as the generic Page Analyzer.
 Endpoint paths are relative to `API_BASE`, including its path prefix: for example,
 `/jobs/normalize` with `http://localhost:8000/api/v1` resolves to
@@ -28,8 +34,8 @@ posting can't be submitted again while it is waiting/pending/processing.
 result is loaded from ENDPOINTS.result (assumed `GET /results/{result_id}`). Client polls 2s -> 10s with backoff.
 
 ## Local testing
-For the mock server, set API_BASE to http://localhost:8000 and the analyze endpoint to
-`/jobs/analyze` in config.ts, with matching host_permissions.
+For the mock server, build with `API_BASE` set to `http://localhost:8000` and set
+the analyze endpoint to `/jobs/analyze` in config.ts.
 Run `npm run mock` (login demo/demo), build, and load dist/ unpacked. Test pages: http://localhost:8000/page/1, /page/2, ...
 (a slug containing "fail" makes the job fail). `DURATION_MS=60000 npm run mock` for slow jobs; `GET /admin/expire` invalidates the token.
-For the real server, restore API_BASE and host_permissions.
+For the real server, restore the analyze endpoint and build with the appropriate `API_BASE`.

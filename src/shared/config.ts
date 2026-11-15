@@ -1,5 +1,6 @@
-// Must match host_permissions in manifest.json
-export const API_BASE = 'http://localhost:8000/api/v1';
+// Injected at build time; the generated manifest receives the matching host permission.
+declare const __API_BASE__: string;
+export const API_BASE = __API_BASE__;
 
 export function resolveApiUrl(pathOrUrl: string): URL {
   const base = new URL(`${API_BASE.replace(/\/+$/, '')}/`);
